@@ -1,3 +1,11 @@
+.material-icons.md-36 {
+    position: relative;
+    top: 6px;
+    left: -8px;
+    margin-right: -6px;
+    font-size: 36px;
+}
+
 .card {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12), 0 -2px 5px 0 rgba(0,0,0,.16), 0 -2px 10px 0 rgba(0,0,0,.12);
     font-weight:300;
