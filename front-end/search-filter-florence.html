@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Search</title>
+    
+  </head>
+  <body>
+    <header>
+      <!-- Back Button -->
+      <i class="fas fa-chevron-left fa-2x back-chevron"></i>
+      <!-- Search -->
+      <form class="search-bar">
+        <div class="input-group">
+          <!-- <div class="input-group-addon">
+            <i class="fas fa-search"></i>
+          </div> -->
+          <input class="form-control" type="text" placeholder="Search by location">
+          <button id="searchButton">Search</button>
+        </div>
+      </form>
+    </header>
+    <!-- Or -->
+    <div class="line-thru">
+      OR
+    </div>
+    <h4 class="center-heading">Filter by features</h4>
+    <!-- Body (Feature Selection) -->
+    <main class="container" id="feature-body">
+      <!-- Features -->
+      <div class="row">
+        <div class="col-4 feature-col">
+          <i class="fas fa-male fa-5x"></i>
+          <p>Male</p>
+        </div>
+        <div class="col-4 feature-col">
+          <i class="fas fa-female fa-5x"></i>
+          <p>Female</p>
+        </div>
+        <div class="col-4 feature-col">
+          <i class="fas fa-wheelchair fa-5x"></i>
+          <p>Accessible</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 feature-col">
+          <i class="fas fa-shower fa-5x"></i>
+          <p>Shower</p>
+        </div>
+        <div class="col-4 feature-col">
+          <i class="fas fa-child fa-5x"></i>
+          <p>Baby Change</p>
+        </div>
+        <div class="col-4 feature-col">
+          <i class="fas fa-dollar-sign fa-5x"></i>
+          <p>Free</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 feature-col">
+          <i class="fas fa-parking fa-5x"></i>
+          <p>Parking</p>
+        </div>
+        <div class="col-4 feature-col">
+          <i class="fas fa-tint fa-5x"></i>
+          <p>Drinking Water</p>
+        </div>
+        <div class="col-4 feature-col">
+          <i class="fas fa-syringe fa-5x"></i>
+          <p>Sharps Disposal</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- JS LINKS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript">
+      $(".feature-col").on("click", function() {
+        console.log("hi");
+        $(this).toggleClass("feature-selected");
+      });
+
+
+      $("#searchButton").on("click", function(){
+          event.preventDefault();
+          console.log("serach is clicked");
+
+          $.getJSON({
+              url: 'https://data.gov.au/api/3/action/datastore_search?callback=?',
+              data: {
+                  resource_id: '54566d76-a809-4959-8622-61dc30b3114d', // the resource id
+                  limit: 38,
+                  filters: '{"Female":"True", "Town":"Sydney","PaymentRequired":"False","BabyChange":"True"}' // query for 'jones'
+              },
+              dataType: 'jsonp',
+              success: (data) => {
+                  console.log('Total results found: ' + data.result.total);
+                  for(var i = 0 ; i < data.result.total ; i++){
+                      //console.log('Data: ' + data.result.records[i].ToiletID)
+                      // var toilet = JSON.stringify(data.result.records[i]);
+                      document.cookie += JSON.stringify(data.result.records[i]);
+                      //do sth with 
+
+                      console.log(JSON.stringify(data.result.records[i]));
+                  }  
+                  //redirect to map                
+              },
+              cache: true,
+              // processData: false
+          });
+
+
+          console.log("done");
+      }
+      );
+
+    </script>
+  </body>
+</html>
