@@ -8,16 +8,6 @@ let accuracy_radius;
 let info_card_context = new Hammer(document.getElementById("info-card"));
 $("#map").on("click", slideUpBothCards)
 
-<<<<<<< HEAD
-$("#direction-btn").on("click", (e) => {
-    let toilet = locations.filter(toilet => toilet.ToiletID == tid)[0]
-    window.location = `https://www.google.com/maps/dir/?api=1&origin=${user_pos.toUrlValue()}&destination=${toilet.Latitude},${toilet.Longitude}&travelmode=walking`;
-});
-
-$("#save-btn").on("click", (e) => {
-    $("#save-btn").text("Saved.");
-});
-=======
 $("#direction-btn").on("click", (e)=> {
     let toilet = locations.filter(toilet => toilet.ToiletID == tid)[0]
     window.location = `https://www.google.com/maps/dir/?api=1&origin=${user_pos.toUrlValue()}&destination=${toilet.Latitude},${toilet.Longitude}&travelmode=walking`
@@ -26,7 +16,6 @@ $("#direction-btn").on("click", (e)=> {
 $("#save-btn").on("click", (e) => {
     $("#save-btn").text("Saved")
 })
->>>>>>> b2bae684e74d4223bb43e57255488612cec86284
 
 info_card_context.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 info_card_context.on('swipe', function(ev) {
@@ -62,7 +51,6 @@ function slideDownHalfCard(tid){
     $("#info-card").removeClass("full")
 }
 function slideUpInfo(tid) {
-<<<<<<< HEAD
     $("#info-card").data("tid", tid);
     let toilet = locations.filter(toilet => toilet.ToiletID == tid)[0]
     $("#info-card").removeClass("full")
@@ -79,19 +67,10 @@ function slideUpInfo(tid) {
             $("#opening-hours").text("Open");
         }
         showFeatures(toilet);
-=======
-    $("#info-card").data("tid", tid)
-    let toilet = locations.filter(toilet => toilet.ToiletID == tid)[0]
-    $("#info-card").removeClass("full")
-    setTimeout(() => {    
-        $(".rating").text(`/./ ★`)
-        $(".address").text(toilet.Name) 
->>>>>>> b2bae684e74d4223bb43e57255488612cec86284
         $("#info-card").addClass("full")
     }, 300);
 
     // $ ★
-<<<<<<< HEAD
 
 }
 
@@ -123,8 +102,6 @@ function showFeatures(toilet) {
     if (toilet.SharpsDisposal == "True") {
         $(".icons").append('<i class="feature-icon fas fa-syringe fa-2x"></i>');
     }
-=======
->>>>>>> b2bae684e74d4223bb43e57255488612cec86284
 }
 
 function mark_closest_toilets(data) {
