@@ -8,6 +8,15 @@ let accuracy_radius;
 let info_card_context = new Hammer(document.getElementById("info-card"));
 $("#map").on("click", slideUpBothCards)
 
+$("#direction-btn").on("click", (e)=> {
+    let toilet = locations.filter(toilet => toilet.ToiletID == tid)[0]
+    window.location = `https://www.google.com/maps/dir/?api=1&origin=${user_pos.toUrlValue()}&destination=${toilet.Latitude},${toilet.Longitude}&travelmode=walking`
+})
+
+$("#save-btn").on("click", (e) => {
+    $("#save-btn").text("Saved")
+})
+
 info_card_context.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 info_card_context.on('swipe', function(ev) {
     tid = $("#info-card").data("tid")
@@ -52,7 +61,6 @@ function slideUpInfo(tid) {
     }, 300);
 
     // $ ★
-
 }
 
 function mark_closest_toilets(data) {

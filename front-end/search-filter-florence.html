@@ -93,7 +93,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
     <!-- Custom JS -->
     <script type="text/javascript">
-      document.cookie="default=default";
 
       var selectedFilters = [];
       var toiletResults = [];
@@ -113,7 +112,7 @@
           console.log("serach is clicked");
           selectedFiltersJSON = encodeURIComponent(JSON.stringify(selectedFilters));
           console.log(selectedFiltersJSON);
-          document.cookie="filters=selectedFiltersJSON";
+          document.cookie=`filters=${selectedFiltersJSON}`;
           var toiletFilters = {"Town":"Sydney","PaymentRequired":"False"};
           toiletFilters["Unisex"]="True";
           //toiletFilters.push({key:"Unisex", value:"True"});
@@ -140,7 +139,7 @@
                       //console.log(JSON.stringify(data.result.records[i]));
                   }
                   toiletResultsJSON=encodeURIComponent(JSON.stringify(toiletResults));
-                  document.cookie = "toilets=toiletResultsJSON";  
+                  document.cookie = `toilets=${toiletResultsJSON}`;  
                   console.log(document.cookie);
                   //redirect to map                
               },
