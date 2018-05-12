@@ -8,8 +8,8 @@
     background-color:white;
 }
 
-.card-text{
-    line-height:10px;
+.feature-icon {
+    margin: 5px 10px 0 0;
 }
 
 #sketch {
@@ -92,9 +92,7 @@
     color: #DD3540;
 }
 
-.feature-icon {
-    margin: 5px 10px 0 0;
-}
+
 
 .address {
     font-weight: bold;

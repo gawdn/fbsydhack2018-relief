@@ -148,6 +148,9 @@ header {
     margin-top: 25px;
   }
   
+  #opening-hours {
+    line-height: 1em;
+  }
   
   
   body {
