@@ -91,7 +91,7 @@ function showFeatures(toilet) {
         $(".icons").append('<i class="feature-icon fas fa-child fa-2x"></i>');
     }
     if (toilet.PaymentRequired == "False") {
-        $(".icons").append('<i class="feature-icon fas fa-dollar-sign fa-2x"></i>');
+        $(".icons").append('<i class="material-icons md-36">money_off</i>');
     }
     if (toilet.Parking == "True") {
         $(".icons").append('<i class="feature-icon fas fa-parking fa-2x"></i>');
