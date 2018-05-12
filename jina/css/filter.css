@@ -1,0 +1,35 @@
+  .row {
+    margin: 0;
+    padding: 0 25px 0 25px;
+  }
+  
+  .feature-col {
+    text-align: center;
+    padding-top:12px;
+    border-style:solid;
+    border-radius:50%;
+    width: 95px;
+    height: 95px;
+    border-width:1px;
+    border-color:#424242;
+  }
+  
+  .feature-selected {
+    background-color: #71ADFE;
+    color: white;
+    border-style: none;
+  }
+  
+  #feature-body {
+    padding: 100px 0 0 0;
+    text-align: center;
+  }
+  
+  #feature-body i {
+    margin: 0 0 5px 0;
+  }
+  
+  body {
+    line-height:1;
+  }
+  
