@@ -49,4 +49,31 @@
     padding: 10px;
 }
 
+.address {
+    font-weight: bold;
+}
 
+
+#info-card {
+    margin-top: 200px;
+    max-height: 0;
+    transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
+    
+}
+
+#info-card.full {
+    max-height: 1000px;
+    transition: max-height 0.4s ease-in-out;
+}
+
+#info-page {
+    max-height: 0;
+    transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+    
+}
+
+
+#info-page.full {
+    max-height: 380px;
+    transition: max-height 0.4s ease-in-out;
+}

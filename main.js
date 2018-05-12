@@ -5,6 +5,56 @@ let user_postcode;
 let user_circle;
 let accuracy_radius;
 
+let info_card_context = new Hammer(document.getElementById("info-card"));
+$("#map").on("click", slideUpBothCards)
+
+info_card_context.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+info_card_context.on('swipe', function(ev) {
+    tid = $("#info-card").data("tid")
+
+    if (ev.direction == Hammer.DIRECTION_UP) {
+        slideUpFullCard(tid)
+    } else if (ev.direction == Hammer.DIRECTION_DOWN) {
+      
+        if ($("#info-page").hasClass("full")) {
+            slideDownFullCard(tid)
+        } else{
+            slideDownHalfCard(tid)
+        }
+    }
+});
+
+function slideUpBothCards() {
+    $("#info-card").removeClass("full")
+    $("#info-page").removeClass("full")
+
+}
+
+function slideUpFullCard(tid) {
+    $("#info-page").addClass("full")
+}
+
+function slideDownFullCard(tid) {
+    $("#info-page").removeClass("full")
+}
+
+function slideDownHalfCard(tid){
+    $("#info-card").removeClass("full")
+}
+function slideUpInfo(tid) {
+    $("#info-card").data("tid", tid)
+    let toilet = locations.filter(toilet => toilet.ToiletID == tid)[0]
+    $("#info-card").removeClass("full")
+    setTimeout(() => {    
+        $(".rating").text(`/./ ★`)
+        $(".address").text(toilet.Name) 
+        $("#info-card").addClass("full")
+    }, 300);
+
+    // $ ★
+
+}
+
 function mark_closest_toilets(data) {
     
     locations = data.result.records
@@ -15,8 +65,14 @@ function mark_closest_toilets(data) {
             {
                 position: pos,
                 map: map,
+                toilet_id: loc.ToiletID
             }
         )
+
+        google.maps.event.addListener(pin, "click", () => {
+            slideUpInfo(pin.toilet_id)
+        })
+
         bounds.extend(pos)
     }
     
@@ -25,6 +81,7 @@ function mark_closest_toilets(data) {
 }
 
 function get_closest_toilets() {
+    // GEOCACHING METHOD
     $.getJSON({
         url: 'https://data.gov.au/api/3/action/datastore_search?callback=?',
         data: {
@@ -57,7 +114,7 @@ function mark_user_position() {
     )
 
     user_circle = new google.maps.Circle({
-        strokeColor: "#5FCDE4",
+        strokeColor: "#1569C7",
         fillColor: "#5FCDE4",
         strokeOpacity: 0.9,
         fillOpacity: 0.4,
@@ -112,7 +169,7 @@ function error_user_position() {
 
 function get_user_position() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(geocode_user_position, error_user_position);
+        navigator.geolocation.getCurrentPosition(geocode_user_position, error_user_position)
     }
 }
 

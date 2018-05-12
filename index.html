@@ -11,21 +11,68 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 
-    <script src="main.js" defer></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/default.css" rel="stylesheet">
+    <link href="css/toiletcard.css" rel="stylesheet">
+    <link href="css/map.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA1Pxz5-2TQfE4hH3mbhzgInYbBIki6QY&callback=init_map"
         async defer></script>
+    <script src="main.js" defer></script>
+</head>
 <body>
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-            * element that contains the map. */
-        #map {
-            height: 100%;
-        }
-        /* Optional: Makes the sample page fill the window. */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
     <div id="map"></div>
+    <div id="info-card" class="card fixed-bottom">
+        <div class="card-header primary-color white-text">
+            <span class="rating"><b>3.3 <i class="fas fa-star"></i></b></span>
+            <h2 class="address">177 King St</h2>
+            <div class="card-text">
+                <p>Sydney, NSW</p>
+                <p>199m away | Open now</p>
+            </div>
+        </div>
+        <div id="info-page">
+                <div class="button-bar">
+                        <a class="btn btn-outline-primary" href="#" role="button">Directions</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Save</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Rate</a>
+                </div>
+                
+                <hr>
+        
+                <div class="icons margin">
+                        <h5>Icons go here</h5>
+                    </div>
+        
+                <hr>
+        
+                <div class="details margin">
+                    <h5>Access</h5>
+                    <p>Toilet is only available to patrons of the Cafe OR people with a MLAK Disabled Access Toilet Key. Square Hirers are provided keys to access the public toilets outside Cafe hours. Please call 9748 995</p>
+                    <h5>Number of Stalls</h5>
+                    <p>4</p>
+                </div>
+        
+                <hr>
+        
+                <div class="reviews margin row">
+                    <div class="col-8">
+                            <p class="review-item">Wow I love this toilet!</p>
+                    </div>
+                    <div class="col-4">
+                            <p class="rating"><b>4.5 ★</b></p>
+                    </div>
+                
+                </div>
+            </div>
+    </div>
+    
+</body>
+</html>
