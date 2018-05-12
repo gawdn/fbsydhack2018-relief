@@ -112,16 +112,44 @@
           console.log("serach is clicked");
           selectedFiltersJSON = encodeURIComponent(JSON.stringify(selectedFilters));
           console.log(selectedFiltersJSON);
-          document.cookie=`filters=${selectedFiltersJSON}`;
-          var toiletFilters = {"Town":"Sydney","PaymentRequired":"False"};
-          toiletFilters["Unisex"]="True";
+
+          document.cookie="filters=selectedFiltersJSON";
+          var toiletFilters = {"Town":"Sydney"};
+          if(selectedFilters.includes("feature-male")){
+            toiletFilters["Male"]="True";
+          }
+          if(selectedFilters.includes("feature-female")){
+            toiletFilters["Female"]="True";
+          }
+          if(selectedFilters.includes("feature-accessible")){
+            toiletFilters["Unisex"]="True";
+          }
+          if(selectedFilters.includes("feature-shower")){
+            toiletFilters["Showers"]="True";
+          }
+          if(selectedFilters.includes("feature-baby")){
+            toiletFilters["BabyChange"]="True";
+          }
+          if(selectedFilters.includes("feature-free")){
+            toiletFilters["PaymentRequired"]="False";
+          }
+          if(selectedFilters.includes("feature-parking")){
+            toiletFilters["Parking"]="True";
+          }
+          if(selectedFilters.includes("feature-water")){
+            toiletFilters["DrinkingWater"]="True";
+          }
+          if(selectedFilters.includes("feature-sharps")){
+            toiletFilters["SharpsDisposal"]="True";
+          }
+
           //toiletFilters.push({key:"Unisex", value:"True"});
 
           $.getJSON({
               url: 'https://data.gov.au/api/3/action/datastore_search?callback=?',
               data: {
                   resource_id: '54566d76-a809-4959-8622-61dc30b3114d', // the resource id
-                  limit: 50,
+                  limit: 100,
                   //filters: '{"Unisex":"True", "Town":"Sydney","PaymentRequired":"False"}' // query for 'jones'
                   filters:JSON.stringify(toiletFilters)
                   //filters.push({key:"Unisex", value:"True"});
