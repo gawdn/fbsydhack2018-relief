@@ -112,6 +112,7 @@
           console.log("serach is clicked");
           selectedFiltersJSON = encodeURIComponent(JSON.stringify(selectedFilters));
           console.log(selectedFiltersJSON);
+<<<<<<< HEAD
           document.cookie="filters=selectedFiltersJSON";
           var toiletFilters = {"Town":"Sydney"};
           if(selectedFilters.includes("feature-male")){
@@ -142,6 +143,11 @@
             toiletFilters["SharpsDisposal"]="True";
           }
           
+=======
+          document.cookie=`filters=${selectedFiltersJSON}`;
+          var toiletFilters = {"Town":"Sydney","PaymentRequired":"False"};
+          toiletFilters["Unisex"]="True";
+>>>>>>> 2723422f435d5b640bde094ef548fb5de8057eba
           //toiletFilters.push({key:"Unisex", value:"True"});
 
           $.getJSON({
@@ -166,7 +172,7 @@
                       //console.log(JSON.stringify(data.result.records[i]));
                   }
                   toiletResultsJSON=encodeURIComponent(JSON.stringify(toiletResults));
-                  document.cookie = "toilets=toiletResultsJSON";  
+                  document.cookie = `toilets=${toiletResultsJSON}`;  
                   console.log(document.cookie);
                   //redirect to map                
               },
