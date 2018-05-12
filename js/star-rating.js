@@ -17,6 +17,12 @@ $(document).ready(function(){
   
   star_rating.on('click', function() {
     star_rating.siblings('input.rating-value').val($(this).data('rating'));
+    let rating = star_rating.siblings('input.rating-value').val();
+    setTimeout(() => {
+      $(".reviews").append('<div class="col-4"><p class="rating-small"><b>' + rating + ' <span class="fa fa-star checked fa-small"></span>');
+    }, 400);
+    $(".rating").text(`2.75 ★`);
+    $("#panel").slideToggle("slow");
     return SetRatingStar();
   });
   

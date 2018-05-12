@@ -17,6 +17,12 @@ $("#save-btn").on("click", (e) => {
     $("#save-btn").text("Saved")
 })
 
+$(".star-rating").on("click", (e) => {
+    let comment = $("#toilet-review").val();
+    $(".reviews").append('<div class="col-8"><p class="review-item">' + comment + '</p></div>');
+    $("#toilet-review").val("");
+});
+
 info_card_context.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 info_card_context.on('swipe', function(ev) {
     tid = $("#info-card").data("tid")
@@ -57,7 +63,7 @@ function slideUpInfo(tid) {
     $(".icons").html("<h5>Features and Facilities</h5>");
     console.log(toilet);
     setTimeout(() => {
-        $(".rating").text(`3.3 ★`);
+        $(".rating").text(`4.5 ★`);
         $(".address").text(toilet.Name);
         if (toilet.OpeningHoursSchedule != "") {
             $("#opening-hours").text(toilet.OpeningHoursSchedule);
@@ -67,6 +73,7 @@ function slideUpInfo(tid) {
             $("#opening-hours").text("Open");
         }
         showFeatures(toilet);
+        $(".reviews").html('<div class="col-8"><p class="review-item">Wow I love this toilet!</p></div><div class="col-4"><p class="rating-small"><b>4.5 <span class="fa fa-star checked fa-small"></span></div>');
         $("#info-card").addClass("full")
     }, 300);
 

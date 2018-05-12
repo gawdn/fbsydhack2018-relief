@@ -10,13 +10,15 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/filter.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+
     <title>Search</title>
   </head>
   <body>
     <header>
       <!-- Back Button -->
-      <i class="fas fa-chevron-left fa-2x back-chevron"></i>
+      <a href="javascript:history.back()" id="back"><i class="fas fa-chevron-left fa-2x back-chevron"></i></a>
       <!-- Search -->
       <form class="search-bar">
         <div class="input-group">
@@ -27,55 +29,58 @@
         </div>
       </form>
     </header>
+
     <!-- Or -->
     <div class="line-thru">
       OR
     </div>
-    <h4 class="center-heading">Filter by features</h4>
+    <h4 class="center-heading">Filter By Features</h4>
     <!-- Body (Feature Selection) -->
     <main class="container" id="feature-body">
       <!-- Features -->
       <div class="row">
-        <div class="col-4 feature-col">
-          <i class="fas fa-male fa-5x"></i>
+        <div class="col-4 ">
+          <i class="fas fa-male fa-4x feature-col"></i>
           <p>Male</p>
         </div>
-        <div class="col-4 feature-col">
-          <i class="fas fa-female fa-5x"></i>
+        <div class="col-4">
+          <i class="fas fa-female fa-4x feature-col"></i>
           <p>Female</p>
         </div>
-        <div class="col-4 feature-col">
-          <i class="fas fa-wheelchair fa-5x"></i>
+        <div class="col-4">
+          <i class="fas fa-wheelchair fa-4x feature-col"></i>
           <p>Accessible</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-4 feature-col">
-          <i class="fas fa-shower fa-5x"></i>
+        <div class="col-4">
+          <i class="fas fa-shower fa-4x feature-col"></i>
           <p>Shower</p>
         </div>
-        <div class="col-4 feature-col">
-          <i class="fas fa-child fa-5x"></i>
+        <div class="col-4">
+          <i class="fas fa-child fa-4x feature-col"></i>
           <p>Baby Change</p>
         </div>
-        <div class="col-4 feature-col">
-          <i class="fas fa-dollar-sign fa-5x"></i>
+        <div class="col-4">
+          <i class="fas fa-dollar-sign fa-4x feature-col"></i>
           <p>Free</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-4 feature-col">
-          <i class="fas fa-parking fa-5x"></i>
+        <div class="col-4">
+          <i class="fas fa-parking fa-4x feature-col"></i>
           <p>Parking</p>
         </div>
-        <div class="col-4 feature-col">
-          <i class="fas fa-tint fa-5x"></i>
+        <div class="col-4">
+          <i class="fas fa-tint fa-4x feature-col"></i>
           <p>Drinking Water</p>
         </div>
-        <div class="col-4 feature-col">
-          <i class="fas fa-syringe fa-5x"></i>
+        <div class="col-4">
+          <i class="fas fa-syringe fa-4x feature-col"></i>
           <p>Sharps Disposal</p>
         </div>
+      </div>
+
       </div>
     </main>
 

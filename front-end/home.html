@@ -12,20 +12,55 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/home.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/default.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-    <!-- Start your project here-->
-    <div style="height: 100vh">
-        <div class="flex-center flex-column">
-            <h1 class="animated fadeIn">Relief</h1>
-            <h5 class="animated fadeIn mb-5">Just in time</h5>
-            <a href="toiletcard.html" class = "btn btn-outline-primary" role="button">FIND NEAREST TOILET</a>
-        </div>
-    </div>
+        <div id="wrapper">
+
+                <!-- Sidebar -->
+                <div id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-brand">
+                            <h1><b>Relief</b></h1>
+                        </li>
+                        <li>
+                            <a href="#">Bookmarks</a>
+                        </li>
+                        <li>
+                            <a href="#">Add Toilet</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /#sidebar-wrapper -->
+        
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <div class = "btn-grp">
+                        <a href="#menu-toggle" class="btn btn-primary p-3" id="menu-toggle"><i class="fa fa-bars"></i></a>
+                        <a href="#" class="btn btn-primary p-3" id="menu-toggle"><i class="fa fa-filter"></i></a>
+
+                    </div>
+                        <div class="flex-center flex-column">
+                            
+                            
+                            <h1 class="animated fadeIn">Relief</h1>
+                            <h5 class="animated fadeIn mb-5">Just in time</h5>
+                            <a href="#" class = "btn btn-outline" role="button">FIND NEAREST TOILET</a>
+                        
+                    </div>
+                </div>
+                <!-- /#page-content-wrapper -->
+        
+            </div>
+            <!-- /#wrapper -->
 
     <!-- /Start your project here-->
 
@@ -38,6 +73,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/navbar.js"></script>
 </body>
 
 </html>
