@@ -67,11 +67,9 @@ function slideUpInfo(tid) {
             $("#opening-hours").text("Open");
         }
         showFeatures(toilet);
+        $("#num-stalls").text((tid % 5));  // "random" but same number for same toilet every time
         $("#info-card").addClass("full")
     }, 300);
-
-    // $ ★
-
 }
 
 function showFeatures(toilet) {

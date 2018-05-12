@@ -1,0 +1,83 @@
+.card {
+    background-color:#eeeeee;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12), 0 -2px 5px 0 rgba(0,0,0,.16), 0 -2px 10px 0 rgba(0,0,0,.12);
+}
+
+.card-header{
+    padding:30px;
+}
+
+.card-text{
+    line-height:10px;
+}
+
+#sketch {
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/0/02/Google_Maps_for_iOS.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.rating{
+    float:right;
+    border-style: solid;
+    border-radius: 10px;
+    padding:5px 10px 5px 10px;
+    background-color: white;
+    border-color: #424242;
+    color: #424242;
+    border-width: 1px;
+}
+
+.button-bar {
+    padding-top:10px;
+    display: flex;
+    justify-content: center;
+}
+.btn.btn-outline-primary {
+    border-radius: 20px;
+    padding:.84rem 1.8rem;
+}
+
+.margin {
+    margin: 30px;
+}
+
+.review-item {
+    border-radius:10px;
+    border-style:solid;
+    border-width:0.5px;
+    padding: 10px;
+}
+
+.address {
+    font-weight: bold;
+}
+
+.feature-icon {
+    margin: 5px 10px 0 0;
+}
+
+
+#info-card {
+    margin-top: 200px;
+    max-height: 0;
+    transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
+    
+}
+
+#info-card.full {
+    max-height: 1000px;
+    transition: max-height 0.4s ease-in-out;
+}
+
+#info-page {
+    max-height: 0;
+    transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+    
+}
+
+
+#info-page.full {
+    max-height: 380px;
+    transition: max-height 0.4s ease-in-out;
+}
