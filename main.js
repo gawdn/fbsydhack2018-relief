@@ -111,6 +111,31 @@ function showFeatures(toilet) {
     }
 }
 
+function mark_closest_toilets_no_cookie(data) {
+    
+    locations = data.result.records
+    let bounds =  new google.maps.LatLngBounds();
+    for (let loc of locations) {
+        let pos = new google.maps.LatLng(loc.Latitude, loc.Longitude)
+        let pin = new google.maps.Marker(
+            {
+                position: pos,
+                map: map,
+                toilet_id: loc.ToiletID
+            }
+        )
+
+        google.maps.event.addListener(pin, "click", () => {
+            slideUpInfo(pin.toilet_id)
+        })
+
+        bounds.extend(pos)
+    }
+    
+    map.fitBounds(bounds);
+    
+}
+
 function mark_closest_toilets(data) {
     
     locations = data.result.records
@@ -136,20 +161,48 @@ function mark_closest_toilets(data) {
     
 }
 
+function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+}
+
 function get_closest_toilets() {
     // GEOCACHING METHOD
-    $.getJSON({
-        url: 'https://data.gov.au/api/3/action/datastore_search?callback=?',
-        data: {
-            resource_id: '54566d76-a809-4959-8622-61dc30b3114d', // the resource id
-            limit: 10,
-            filters: `{"Male": "True", "Postcode": "${user_postcode}"}`, // query for 'jones'
-            offset: 0
-        },
-        dataType: 'jsonp',
-        success: mark_closest_toilets,
-        cache: true,
-    });
+
+    filters = decodeURIComponent(getCookie("real_filters"))
+    console.log()
+    if (filters != "null") {
+        toiletFilters = JSON.parse(filters)
+        $.getJSON({
+            url: 'https://data.gov.au/api/3/action/datastore_search?callback=?',
+            data: {
+                resource_id: '54566d76-a809-4959-8622-61dc30b3114d', // the resource id
+                limit: 10,
+                //filters: '{"Unisex":"True", "Town":"Sydney","PaymentRequired":"False"}' // query for 'jones'
+                filters:JSON.stringify(toiletFilters)
+                //filters.push({key:"Unisex", value:"True"});
+            },
+            dataType: 'jsonp',
+            success: mark_closest_toilets,
+            cache: true,
+            // processData: false
+        });
+
+    } else {
+        $.getJSON({
+            url: 'https://data.gov.au/api/3/action/datastore_search?callback=?',
+            data: {
+                resource_id: '54566d76-a809-4959-8622-61dc30b3114d', // the resource id
+                limit: 10,
+                filters: `{"Male": "True", "Postcode": "${user_postcode}"}`, // query for 'jones'
+                offset: 0
+            },
+            dataType: 'jsonp',
+            success: mark_closest_toilets,
+            cache: true,
+        });
+    }
+
 }
 
 function mark_user_position() {

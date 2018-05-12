@@ -18,7 +18,7 @@
   <body>
     <header>
       <!-- Back Button -->
-      <a href="javascript:history.back()" id="back"><i class="fas fa-chevron-left fa-2x back-chevron"></i></a>
+      <a href="/index.html" id="back"><i class="fas fa-chevron-left fa-2x back-chevron"></i></a>
       <!-- Search -->
       <form class="search-bar">
         <div class="input-group">
@@ -95,10 +95,65 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
     <!-- Custom JS -->
     <script type="text/javascript">
-      $(".feature-col").on("click", function() {
-        console.log("hi");
-        $(this).toggleClass("feature-selected");
-      });
+
+          var selectedFilters = [];
+          var toiletResults = [];
+    
+          $(".feature-col").on("click", function(e) {
+            console.log("hi");
+            var currentFilter = $(e.currentTarget).data("filter");
+            console.log(currentFilter);
+            //document.cookie+=currentFilter;
+            selectedFilters.push(currentFilter);
+            $(this).toggleClass("feature-selected");
+            console.log($(this).toggleClass('selected'));
+          });
+    
+    
+          $("#back").on("click", function(){
+              event.preventDefault();
+              console.log("serach is clicked");
+              selectedFiltersJSON = encodeURIComponent(JSON.stringify(selectedFilters));
+              console.log(selectedFiltersJSON);
+    
+              document.cookie=`filters=${selectedFiltersJSON}; path=/; max-age=10;`;
+              var toiletFilters = {"Town":"Sydney"};
+              if(selectedFilters.includes("feature-male")){
+                toiletFilters["Male"]="True";
+              }
+              if(selectedFilters.includes("feature-female")){
+                toiletFilters["Female"]="True";
+              }
+              if(selectedFilters.includes("feature-accessible")){
+                toiletFilters["Unisex"]="True";
+              }
+              if(selectedFilters.includes("feature-shower")){
+                toiletFilters["Showers"]="True";
+              }
+              if(selectedFilters.includes("feature-baby")){
+                toiletFilters["BabyChange"]="True";
+              }
+              if(selectedFilters.includes("feature-free")){
+                toiletFilters["PaymentRequired"]="False";
+              }
+              if(selectedFilters.includes("feature-parking")){
+                toiletFilters["Parking"]="True";
+              }
+              if(selectedFilters.includes("feature-water")){
+                toiletFilters["DrinkingWater"]="True";
+              }
+              if(selectedFilters.includes("feature-sharps")){
+                toiletFilters["SharpsDisposal"]="True";
+              }
+    
+              //toiletFilters.push({key:"Unisex", value:"True"});
+              document.cookie=`real_filters=${encodeURIComponent(JSON.stringify(toiletFilters))}; path=/; max-age=10;`;
+    
+              location.href = "/index.html"
+              console.log("done");
+              //console.log(document.cookie);
+          }
+          );
     </script>
   </body>
 </html>

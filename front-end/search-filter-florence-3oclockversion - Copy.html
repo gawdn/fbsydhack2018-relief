@@ -114,7 +114,7 @@
           selectedFiltersJSON = encodeURIComponent(JSON.stringify(selectedFilters));
           console.log(selectedFiltersJSON);
 
-          document.cookie="filters=selectedFiltersJSON";
+          document.cookie=`filters=${selectedFiltersJSON}; path=/; max-age=10;`;
           var toiletFilters = {"Town":"Sydney"};
           if(selectedFilters.includes("feature-male")){
             toiletFilters["Male"]="True";
@@ -145,38 +145,9 @@
           }
 
           //toiletFilters.push({key:"Unisex", value:"True"});
+          document.cookie=`real_filters=${encodeURIComponent(JSON.stringify(toiletFilters))}; path=/; max-age=10;`;
 
-          $.getJSON({
-              url: 'https://data.gov.au/api/3/action/datastore_search?callback=?',
-              data: {
-                  resource_id: '54566d76-a809-4959-8622-61dc30b3114d', // the resource id
-                  limit: 100,
-                  //filters: '{"Unisex":"True", "Town":"Sydney","PaymentRequired":"False"}' // query for 'jones'
-                  filters:JSON.stringify(toiletFilters)
-                  //filters.push({key:"Unisex", value:"True"});
-              },
-              dataType: 'jsonp',
-              success: (data) => {
-                  console.log('Total results found: ' + data.result.total);
-                  for(var i = 0 ; i < data.result.total ; i++){
-                      //console.log('Data: ' + data.result.records[i].ToiletID)
-                      // var toilet = JSON.stringify(data.result.records[i]);
-                      toiletResults.push(JSON.stringify(data.result.records[i]));
-                     
-                      //do sth with 
-
-                      //console.log(JSON.stringify(data.result.records[i]));
-                  }
-                  toiletResultsJSON=encodeURIComponent(JSON.stringify(toiletResults));
-                  document.cookie = `toilets=${toiletResultsJSON}`;  
-                  console.log(document.cookie);
-                  //redirect to map                
-              },
-              cache: true,
-              // processData: false
-          });
-
-
+          location.href = "/index.html"
           console.log("done");
           //console.log(document.cookie);
       }
