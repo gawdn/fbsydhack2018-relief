@@ -2,17 +2,17 @@
 'use strict';
 
 angular.module('ReliefSearchApp', [])
-.controller('ReliefSearchController', ShoppingListController)
-.provider('ReliefSearch', ShoppingListProvider)
+.controller('ReliefSearchController', ReliefSearchController)
+.provider('ReliefSearch', ReliefSearchCProvider)
 .config(Config);
 
 Config.$inject = ['ReliefSearchProvider'];
-function Config(ShoppingListProvider) {
-  ShoppingListProvider.defaults.maxItems = 5;
+function Config(ReliefSearchProvider) {
+  ReliefSearchProvider.defaults.maxItems = 5;
 }
 
-ShoppingListController.$inject = ['ReliefSearch'];
-function ShoppingListController(ShoppingList) {
+ReliefSearchController.$inject = ['ReliefSearch'];
+function ReliefSearchController(ReliefSearch) {
   var list = this;
 
   list.items = ReliefSearch.getItems();
