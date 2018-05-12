@@ -1,0 +1,125 @@
+.card {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12), 0 -2px 5px 0 rgba(0,0,0,.16), 0 -2px 10px 0 rgba(0,0,0,.12);
+    font-weight:300;
+}
+
+.card-header{
+    padding:30px;
+    background-color:white;
+}
+
+.card-text{
+    line-height:10px;
+}
+
+#sketch {
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/0/02/Google_Maps_for_iOS.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.rating{
+    float:right;
+    border-radius: 10px;
+    padding:5px 15px 5px 15px;
+    background-color:white;
+    border-style:solid;
+    border-color:#bdbdbd;
+    border-width:1px;
+    color: #DD3540;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.08), 0 2px 10px 0 rgba(0,0,0,.04);
+    font-size:26px;
+    font-weight:400;
+}
+
+.rating-small{
+    float:right;
+    border-radius: 10px;
+    padding:5px 10px 5px 10px;
+    background-color:white;
+    border-style:solid;
+    border-color:#bdbdbd;
+    border-width:1px;
+    color: #DD3540;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.08), 0 2px 10px 0 rgba(0,0,0,.04);
+    font-size:20px;
+    font-weight:400;
+
+}
+.button-bar {
+    padding-top:10px;
+    display: flex;
+    justify-content: center;
+}
+.margin {
+    margin: 30px;
+}
+
+.review-item {
+    border-radius:10px;
+    border-style:solid;
+    border-width:0.5px;
+    padding: 10px;
+}
+
+.fa-star{
+    font-size:20px;
+    position:relative;
+    bottom:3px;
+}
+.fa-small{
+    font-size:16px;
+}
+
+.fa-star-o {
+    color: black;
+}
+
+.fa-star-o:before {
+    content: "\f005";
+}
+
+#panel{
+    display:none;
+}
+.star-rating {
+    line-height:32px;
+    font-size:1.25em;
+    text-align:center;
+  }
+  
+.star-rating .fa-star{
+    color: #DD3540;
+}
+
+
+
+.address {
+    font-weight: bold;
+}
+
+
+#info-card {
+    margin-top: 200px;
+    max-height: 0;
+    transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
+    
+}
+
+#info-card.full {
+    max-height: 1000px;
+    transition: max-height 0.4s ease-in-out;
+}
+
+#info-page {
+    max-height: 0;
+    transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+    
+}
+
+
+#info-page.full {
+    max-height: 380px;
+    transition: max-height 0.4s ease-in-out;
+    overflow: scroll;
+}
