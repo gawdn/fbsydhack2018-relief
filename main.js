@@ -2,6 +2,8 @@ let map;
 let locations;
 let user_pos;
 let user_postcode;
+let user_circle;
+let accuracy_radius;
 
 function mark_closest_toilets(data) {
     
@@ -29,7 +31,7 @@ function get_closest_toilets() {
             resource_id: '54566d76-a809-4959-8622-61dc30b3114d', // the resource id
             limit: 10,
             filters: `{"Male": "True", "Postcode": "${user_postcode}"}`, // query for 'jones'
-            offset: 10
+            offset: 0
         },
         dataType: 'jsonp',
         success: mark_closest_toilets,
@@ -38,17 +40,38 @@ function get_closest_toilets() {
 }
 
 function mark_user_position() {
-    let user_pos = new google.maps.Marker(
+
+    let user_dot = {
+        url: "img/dot.png",
+        size: new google.maps.Size(32, 32),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(15, 15)
+    }
+
+    new google.maps.Marker(
         {
             position: user_pos,
             map: map,
-            label: "I am here!"
+            icon: user_dot
         }
     )
 
+    user_circle = new google.maps.Circle({
+        strokeColor: "#5FCDE4",
+        fillColor: "#5FCDE4",
+        strokeOpacity: 0.9,
+        fillOpacity: 0.4,
+        strokeWeight: 2,
+        map: map,
+        center: user_pos,
+        radius: accuracy_radius
+    })
+
     map.setCenter(user_pos)
+
     get_closest_toilets()
 }
+
 
 function get_user_postcode(results, status) {
     if (status === 'OK') {
@@ -69,6 +92,7 @@ function error_geocode_user_position() {
 }
 
 function geocode_user_position(position) {
+    accuracy_radius = position.coords.accuracy/2
     user_pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
     let geocoder = new google.maps.Geocoder;
     let geocoder_opts = {
