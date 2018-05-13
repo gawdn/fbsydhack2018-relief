@@ -127,7 +127,7 @@
 
 
 #info-page.full {
-    max-height: 380px;
+    max-height: 300px;
     transition: max-height 0.4s ease-in-out;
     overflow: scroll;
 }

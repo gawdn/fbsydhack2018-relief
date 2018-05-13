@@ -24,6 +24,7 @@
     <link href="css/default.css" rel="stylesheet">
     <link href="css/toiletcard.css" rel="stylesheet">
     <link href="css/map.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA1Pxz5-2TQfE4hH3mbhzgInYbBIki6QY&callback=init_map"
@@ -31,69 +32,74 @@
     
     <script type="text/javascript" src="js/star-rating.js"></script>
     <script src="main.js" defer></script>
+    <script type="text/javascript" src="js/navbar.js"></script>
 
 </head>
 <body>
-    <div id="map"></div>
-    <div id="info-card" class="card fixed-bottom">
-        <div class="card-header">
-            <span class="rating"><b>3.3</b><i class="fas fa-star"></i></span>
-            <h2 class="address">177 King St</h2>
-            <div class="card-text">
-                <p>Sydney, NSW</p>
-                <p>199m away | <span id="opening-hours"></span></p>
+
+    <div class = "btn-grp">
+        <a href="/home.html" class="btn btn-primary p-3" id="menu-toggle"><i class="fa fa-bars"></i></a>
+        <a href="front-end/search-filter.html" class="btn btn-primary p-3" id="menu-toggle"><i class="fa fa-filter"></i></a>
+    </div>
+<div id="map"></div>
+<div id="info-card" class="card fixed-bottom">
+    <div class="card-header">
+        <span class="rating"><b>3.3</b><i class="fas fa-star"></i></span>
+        <h2 class="address">177 King St</h2>
+        <div class="card-text">
+            <p>Sydney, NSW</p>
+            <p>199m away | <span id="opening-hours"></span></p>
+        </div>
+    </div>
+    <div id="info-page">
+            <div class="button-bar">
+                    <a id="direction-btn" class="btn btn-filled" role="button">Directions</a>
+                    <a id="save-btn" class="btn btn-filled" href="#" role="button">Save</a>
+                    <a class="btn btn-filled" id="flip" href="#" role="button">Rate</a>
+            </div>
+            
+            <hr>
+            <div class="margin" id="panel">
+                <div class="md-form">
+                    <input type="text" id="toilet-review" class="form-control" placeholder="Write a comment...">
+                </div>
+                
+                <div class="star-rating">
+                    <span class="far fa-star" data-rating="1"></span>
+                    <span class="far fa-star" data-rating="2"></span>
+                    <span class="far fa-star" data-rating="3"></span>
+                    <span class="far fa-star" data-rating="4"></span>
+                    <span class="far fa-star" data-rating="5"></span>
+                    <input type="hidden" name="whatever1" class="rating-value" value="0">
+                </div>
+            </div>
+            
+            <hr>
+            <div class="icons margin">
+                    <h5>Icons go here</h5>
+                </div>
+    
+            <hr>
+    
+            <div class="details margin">
+                <h5>Access</h5>
+                <p>Toilet is only available to patrons of the Cafe OR people with a MLAK Disabled Access Toilet Key. Square Hirers are provided keys to access the public toilets outside Cafe hours. Please call 9748 995</p>
+                <h5>Number of Stalls</h5>
+                <p>4</p>
+            </div>
+    
+            <hr>
+    
+            <div class="reviews margin row">
+                <div class="col-8">
+                        <p class="review-item">Wow I love this toilet!</p>
+                </div>
+                <div class="col-4">
+                        <p class="rating-small"><b>4.5 <span class="fa fa-star checked fa-small"></span>
+                </div>
+            
             </div>
         </div>
-        <div id="info-page">
-                <div class="button-bar">
-                        <a id="direction-btn" class="btn btn-filled" role="button">Directions</a>
-                        <a id="save-btn" class="btn btn-filled" href="#" role="button">Save</a>
-                        <a class="btn btn-filled" id="flip" href="#" role="button">Rate</a>
-                </div>
-                
-                <hr>
-                <div class="margin" id="panel">
-                    <div class="md-form">
-                        <input type="text" id="toilet-review" class="form-control" placeholder="Write a comment...">
-                    </div>
-                    
-                    <div class="star-rating">
-                        <span class="far fa-star" data-rating="1"></span>
-                        <span class="far fa-star" data-rating="2"></span>
-                        <span class="far fa-star" data-rating="3"></span>
-                        <span class="far fa-star" data-rating="4"></span>
-                        <span class="far fa-star" data-rating="5"></span>
-                        <input type="hidden" name="whatever1" class="rating-value" value="0">
-                    </div>
-                </div>
-                
-                <hr>
-                <div class="icons margin">
-                        <h5>Icons go here</h5>
-                    </div>
-        
-                <hr>
-        
-                <div class="details margin">
-                    <h5>Access</h5>
-                    <p>Toilet is only available to patrons of the Cafe OR people with a MLAK Disabled Access Toilet Key. Square Hirers are provided keys to access the public toilets outside Cafe hours. Please call 9748 995</p>
-                    <h5>Number of Stalls</h5>
-                    <p>4</p>
-                </div>
-        
-                <hr>
-        
-                <div class="reviews margin row">
-                    <div class="col-8">
-                            <p class="review-item">Wow I love this toilet!</p>
-                    </div>
-                    <div class="col-4">
-                            <p class="rating-small"><b>4.5 <span class="fa fa-star checked fa-small"></span>
-                    </div>
-                
-                </div>
-            </div>
-    </div>
-    
+</div>
 </body>
 </html>
